@@ -50,11 +50,11 @@ function setCommand(service: Service, httpPort: number, stage: string, index: nu
     if (service.type === 'db') {
         return `
             cd  ${process.cwd()}/${service.source};
-            sls dynamodb start --migrate
+            npx sls dynamodb start --migrate
         `;
     }
     return `
         cd  ${process.cwd()}/${service.source};
-        sls offline --stage ${stage} --httpPort ${httpPort + index} --lambdaPort ${httpPort + index + 1000}
+        npx sls offline --stage ${stage} --httpPort ${httpPort + index} --lambdaPort ${httpPort + index + 1000}
     `;
 }
