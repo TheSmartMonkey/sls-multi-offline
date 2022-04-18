@@ -1,9 +1,9 @@
 export interface Service {
-    srvName: string;
-    srvSource: string;
-    srvPath: string;
-    srvType: SrvType;
+    name: string;
+    source: string;
+    path: string;
+    type: ServiceType;
     stripBasePath: boolean;
 }
 
-export type SrvType = 'api' | 'db';
+export type ServiceType = 'api' | 'db';

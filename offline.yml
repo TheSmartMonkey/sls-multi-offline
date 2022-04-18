@@ -1,0 +1,14 @@
+port: 3100
+services:
+  - name: users
+    path: users
+    source: ./sample/users
+    type: api
+  - name: posts
+    path: posts
+    source: ./sample/posts
+    type: api
+  - name: db
+    path: db
+    source: ./sample/db
+    type: db
