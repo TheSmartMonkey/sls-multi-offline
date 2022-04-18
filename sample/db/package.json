@@ -1,0 +1,16 @@
+{
+  "name": "posts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "db": "sls dynamodb start --migrate",
+    "update": "sls dynamodb install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serverless-dynamodb-local": "^0.2.18"
+  }
+}

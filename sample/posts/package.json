@@ -1,0 +1,15 @@
+{
+  "name": "posts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "curl -X POST -H \"Content-Type:application/json\" http://localhost:3000/dev/create --data '{ \"text\": \"Learn Serverless\" }'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serverless-offline": "^8.5.0"
+  }
+}
