@@ -2,7 +2,7 @@
 
 const uuid = require("uuid");
 const AWS = require("aws-sdk"); // eslint-disable-line import/no-extraneous-dependencies
-const dynamodb = require('./dynamodb');
+const dynamodb = require("./dynamodb");
 
 module.exports.create = (event, context, callback) => {
   const timestamp = new Date().getTime();
