@@ -12,18 +12,18 @@ module.exports.create = (event, context, callback) => {
     callback(null, {
       statusCode: 400,
       headers: { "Content-Type": "text/plain" },
-      body: "Couldn't create post item.",
+      body: "Couldn't create user item.",
     });
     return;
   }
 
   const params = {
-    TableName: process.env.POSTS_TABLE,
+    TableName: process.env.USERS_TABLE,
     Item: {
       id: uuid.v1(),
       text: data.text,
       checked: false,
-      type: "post",
+      type: "user",
       createdAt: timestamp,
       updatedAt: timestamp,
     },
@@ -37,7 +37,7 @@ module.exports.create = (event, context, callback) => {
       callback(null, {
         statusCode: error.statusCode || 501,
         headers: { "Content-Type": "text/plain" },
-        body: "Couldn't create post item.",
+        body: "Couldn't create user item.",
       });
       return;
     }

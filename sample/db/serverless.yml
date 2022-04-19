@@ -19,7 +19,8 @@ provider:
   stage: dev
   runtime: nodejs12.x
   environment:
-    DYNAMODB_TABLE: ${self:service}-${self:provider.stage}
+    POSTS_TABLE: ${self:service}-${self:provider.stage}-posts
+    USERS_TABLE: ${self:service}-${self:provider.stage}-users
   iam:
     role:
       statements:
@@ -32,11 +33,12 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource:
-            - Fn::GetAtt: [ TodosDynamoDbTable, Arn ]
+            - Fn::GetAtt: [ PostsTable, Arn ]
+            - Fn::GetAtt: [ UsersTable, Arn ]
 
 resources:
   Resources:
-    TodosDynamoDbTable:
+    PostsTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
@@ -51,4 +53,20 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        TableName: ${self:provider.environment.POSTS_TABLE}
+    UsersTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.USERS_TABLE}

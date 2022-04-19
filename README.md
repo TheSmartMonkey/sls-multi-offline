@@ -90,5 +90,11 @@ npm run dev
 create a post :
 
 ```bash
-curl -X POST -H "Content-Type:application/json" http://localhost:3101/dev/create --data '{ "text": "Learn Serverless" }'
+curl -X POST -H "Content-Type:application/json" http://localhost:3100/dev/create-post --data '{ "text": "Learn Serverless" }'
+```
+
+create a user :
+
+```bash
+curl -X POST -H "Content-Type:application/json" http://localhost:3101/dev/create-user --data '{ "text": "Learn Serverless" }'
 ```
