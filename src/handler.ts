@@ -25,7 +25,7 @@ export function runServices(services: Service[], httpPort: number, stage: string
     return commands
 }
 
-export function runProxy(services: Service[], httpPort: number, stage: string) {
+export function runProxy(services: Service[], port: number, httpPort: number, stage: string) {
     const app = express();
 
 
@@ -42,7 +42,7 @@ export function runProxy(services: Service[], httpPort: number, stage: string) {
         }));
     }
 
-    app.listen(3000);
+    app.listen(port);
 }
 
 
