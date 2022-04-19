@@ -1,6 +1,6 @@
 # sls-multi-offline
 
-Tool that allows you to run multiple serverless api or db instance under for local development purposes
+Run multiple serverless api or db instance under 1 URL for local development purposes 
 
 This repo is inspired from [sls-multi-gateways](https://github.com/edis/sls-multi-gateways)
 
