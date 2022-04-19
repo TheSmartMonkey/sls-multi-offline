@@ -1,7 +1,7 @@
 {
   "name": "sls-multi-offline",
   "description": "Tool that allows you to run multiple serverless api or db instance under for local development purposes",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/TheSmartMonkey/sls-multi-offline"
