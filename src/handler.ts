@@ -25,24 +25,19 @@ export function runServices(services: Service[], httpPort: number, stage: string
     return commands
 }
 
-export function runProxy(services: Service[], port: number, httpPort: number, stage: string) {
+export function runProxy(services: Service[], httpPort: number, stage: string) {
     const app = express();
 
 
     for (let index = 0; index < services.length; index++) {
         const proxyPath = `/${services[index].path}`
-        const stripBasePath = services[index].stripBasePath
 
         app.use(proxyPath, createProxyMiddleware({
-            pathRewrite: (path: string) => {
-                return stripBasePath ? path.replace(proxyPath, '/') : path;
-            },
+            pathRewrite: (path: string) => path,
             target: `http://localhost:${httpPort + index}/${stage}/`,
             changeOrigin: true,
         }));
     }
-
-    app.listen(port);
 }
 
 

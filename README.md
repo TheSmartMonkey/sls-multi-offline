@@ -35,18 +35,16 @@ touch offline.yml
 Inside your sls-multi-offline config file add the services you would like to run
 
 ```yaml
-port: [port the proxy will run on - (optional: default is 3000)]
+port: [port the proxy will run on - (optional: default is 3100)]
 stage: [stage the proxy will run on - (optional: default is dev)]
 services:
   - name: [name of the service]
     path: [proxy path to the service]
     source: [path to the serverless.yml file belong to that service]
-    stripBasePath: [whether the srvPath will be passed on to the proxy]
     type: [api or db]
   - name: [name of the service 2]
     path: [proxy path to the service 2]
     source: [path to the serverless.yml file belong to that service]
-    stripBasePath: [whether the srvPath will be passed on to the proxy]
     type: [api or db]
 ```
 
@@ -55,13 +53,13 @@ Exemple :
 ```yaml
 port: 3100
 services:
-  - name: users
-    path: users
-    source: ./sample/users
-    type: api
   - name: posts
     path: posts
     source: ./sample/posts
+    type: api
+  - name: users
+    path: users
+    source: ./sample/users
     type: api
   - name: db
     path: db
@@ -69,7 +67,7 @@ services:
     type: db
 ```
 
-All paths by default are mapped to `localhost:[port]/[srvPath]`. To remove `path` , set `stripBasePath` to `true`.
+All paths by default are mapped to `localhost:[port]/[path]`.
 
 ### Usage
 

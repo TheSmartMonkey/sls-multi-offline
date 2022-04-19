@@ -12,7 +12,6 @@ const prefixColors = [
 const file = readConfigFile()
 
 const services = file.services as Service[];
-const port = file.port || 3000;
 const httpPort = file.proxyPort || 3100;
 const stage = file.stage || 'dev';
 
@@ -28,4 +27,4 @@ process.on('SIGINT', () => {
     process.exit(1);
 });
 
-runProxy(services, port, httpPort, stage);
+runProxy(services, httpPort, stage);

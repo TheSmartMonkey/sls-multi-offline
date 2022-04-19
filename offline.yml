@@ -1,5 +1,4 @@
-port: 3000
-proxyPort: 3100
+port: 3100
 services:
   - name: posts
     path: posts
