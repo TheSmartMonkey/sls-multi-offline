@@ -4,6 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
+    "offline": "sls offline start",
     "test": "curl -X POST -H \"Content-Type:application/json\" http://localhost:3000/dev/create --data '{ \"text\": \"Learn Serverless\" }'"
   },
   "keywords": [],

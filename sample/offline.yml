@@ -1,8 +1,0 @@
-port: 3100
-services:
-  - srvName: users
-    srvPath: users
-    srvSource: ./users
-  - srvName: posts
-    srvPath: posts
-    srvSource: ./posts

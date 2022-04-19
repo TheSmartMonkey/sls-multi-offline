@@ -1,6 +1,6 @@
 {
   "name": "sls-multi-offline",
-  "description": "",
+  "description": "Tool that allows you to run multiple serverless api or db instance under for local development purposes",
   "version": "1.0.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -8,8 +8,9 @@
     "build/**/*"
   ],
   "scripts": {
-    "build": "npm run clean && tsc",
+    "npmi": "npm ${NODE_INSTALL_OPTIONS:-i} && cd $INIT_CWD/sample/db  && npm ${NODE_INSTALL_OPTIONS:-i} && cd $INIT_CWD/sample/posts && npm ${NODE_INSTALL_OPTIONS:-i} && cd $INIT_CWD/sample/users && npm ${NODE_INSTALL_OPTIONS:-i}",
     "clean": "del ./build/*",
+    "build": "npm run clean && tsc",
     "pub": "npm version patch && npm run build && npm publish",
     "dev": "ts-node src/index.ts"
   },

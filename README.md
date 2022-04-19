@@ -1,6 +1,6 @@
 # sls-multi-offline
 
-tool that allows you to run multiple serverless api or db instance under for local development purposes
+Tool that allows you to run multiple serverless api or db instance under for local development purposes
 
 This repo is inspired from [sls-multi-gateways](https://github.com/edis/sls-multi-gateways)
 
@@ -8,27 +8,33 @@ sls-multi-gateways is a tool that allows you to run multiple api gateways under 
 
 [Here is a walkthrough article on medium](https://medium.com/@edisgonuler/run-multiple-serverless-applications-d8b38ef04f37)
 
-## Installation
+## Getting started
 
-sls-multi-gateways needs to be installed globally using the following command:
+### Installation
+
+sls-multi-offline needs to be installed globally using the following command:
+
 ```bash
-npm install -g sls-multi-gateways
+npm install -g sls-multi-offline
 ```
 
-## Usage
+### Config
 
-After installing sls-multi-gateways, cd into your project directory
+After installing sls-multi-offline, cd into your project directory
+
 ```bash
 cd [project-directory]
 ```
 
-Create a sls-multi-gateways config file
+Create a offline config file
+
 ```bash
-touch sls-multi-gateways.yml
+touch offline.yml
 ```
 
-Inside your sls-multi-gateways config file add the services you would like to run
-```bash
+Inside your sls-multi-offline config file add the services you would like to run
+
+```yaml
 port: [port the proxy will run on - (optional: default is 3000)]
 stage: [stage the proxy will run on - (optional: default is dev)]
 services:
@@ -44,11 +50,45 @@ services:
     type: [api or db]
 ```
 
+Exemple :
 
-All srvPaths by default are mapped to ```localhost:[port]/[srvPath]```. To remove ```path``` , set  ```stripBasePath``` to ```true```.
+```yaml
+port: 3100
+services:
+  - name: users
+    path: users
+    source: ./sample/users
+    type: api
+  - name: posts
+    path: posts
+    source: ./sample/posts
+    type: api
+  - name: db
+    path: db
+    source: ./sample/db
+    type: db
+```
 
-To run sls-multi-gateways, execute the following cmd in the directory with the config file
+All paths by default are mapped to `localhost:[port]/[srvPath]`. To remove `path` , set `stripBasePath` to `true`.
+
+### Usage
+
+To run sls-multi-offline, execute the following cmd in the directory with the config file
 
 ```bash
-sls-multi-gateways
+sls-multi-offline
+```
+
+## For contributors
+
+Debug :
+
+```bash
+npm run dev
+```
+
+create a post :
+
+```bash
+curl -X POST -H "Content-Type:application/json" http://localhost:3101/dev/create --data '{ "text": "Learn Serverless" }'
 ```
